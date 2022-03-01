@@ -3,8 +3,13 @@ const searchPhone = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     console.log(searchText);
+    searchField.value = '';
+    if (searchText == '') {
+        return alert("Please write something to display");
+    }
+
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
-    console.log(url);
+    // console.log(url);
     fetch(url)
         .then(response => response.json())
         .then(phones => displaySearchResults(phones.data));
@@ -12,6 +17,11 @@ const searchPhone = () => {
 const displaySearchResults = data => {
     console.log(data);
     const searchResult = document.getElementById('search-result');
+    searchResult.textContent = '';
+    if (data.length == 0) {
+        return alert("No results found");
+
+    }
     data.forEach(phone => {
         console.log(phone);
         const div = document.createElement('div');
