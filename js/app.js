@@ -65,61 +65,45 @@ const displayPhoneDetail = data => {
     phoneDetails.textContent = '';
     const div = document.createElement('div');
     div.classList.add('card');
-    // div.innerHTML = `
 
-    // <img src="${data.image}" class="card-img-top" alt="...">
-    // <div class="card-body">
-    //     <h5 class="card-title">Name</h5>
-    //     <p class="card-text">Details</p>
-
-    // </div>
-    // `;
     if (data.releaseDate == "") {
         document.getElementById('release').style.display = 'none';
 
     }
-    console.log(data.others ? data.others : "");
-
-    // if (data.others.WLAN == '' || data.others.GPS == ''
-    //     || data.others.Bluetooth == '' || data.others.NFC == '' || data.others.USB == '' || data.others.Radio == '') {
-    //     document.getElementById('others').style.textContent = 'No found'
-    // }
-
 
     div.innerHTML = `
-    
-    
+       
     <div class="col-lg-12 ">
         <div id="card" class="  card-body">
-        <img src="${data.image}" class="card-img-top w-50 img-fluid mx-auto" alt="...">
-        <p id="release" class="card-text">${data.releaseDate ? data.releaseDate : 'Releasing Soon'}</p>
+            <img src="${data.image}" class="card-img-top w-50 img-fluid mx-auto" alt="...">
+            <p id="release" class="card-text">${data.releaseDate ? data.releaseDate : 'Releasing Soon'}</p>
             <h6 class="card-title">${data.name}</h6>
-            <p class="card-text">Brand:${data.brand}</p>
-            <p class="card-text">Storage:${data.mainFeatures.storage}</p>
-            <p class="card-text">DisplaySize:${data.mainFeatures.displaySize}</p>
-            <p class="card-text">Memory:${data.mainFeatures.memory}</p>
-            <p class="card-text">Sensors:${data.mainFeatures.sensors.join()}</p>
+            <p class="card-text">Brand: ${data.brand}</p>
+            <p class="card-text">Storage: ${data.mainFeatures.storage}</p>
+            <p class="card-text">DisplaySize: ${data.mainFeatures.displaySize}</p>
+            <p class="card-text">Memory: ${data.mainFeatures.memory}</p>
+            <p class="card-text">Sensors: ${data.mainFeatures.sensors.join()}</p>
         </div>
-            </div>
-            <div class="col-lg-12 ">
-         <div id="others" class="  card-body " ${data.others ? data.others : ""}>
-            <hr class="w-100">
-
-            <h6 id="others"class="card-title"></h6>
-            <p class="card-text">WLAN:${data.others.WLAN}</p>
-            <p class="card-text">Bluetooth:${data.others.Bluetooth}</p>
-            <p class="card-text">GPS:${data.others.GPS}</p>
-            <p class="card-text">NFC:${data.others.NFC}</p>
-            <p class="card-text">USB:${data.others.USB}</p>
-            <p class="card-text">Radio:${data.others.Radio}</p>
-         </div>
-        </div>
-
-
-        
-   
-
-</div>
+    </div>
+                       
+    <div  class="col-lg-12 ">
+    <div id="others" class="  card-body ">
+       <hr class="w-100">      
+       <h6 id="others"class="card-title"></h6>
+       <p></p>
+       <p class="card-text">WLAN: ${data.others && data.others.WLAN ? data.others.WLAN : 'Not Available'}</p>
+       <p class="card-text">Bluetooth: ${data.others && data.others.Bluetooth ? data.others.Bluetooth : 'Not Available'}</p>
+       <p class="card-text">GPS: ${data.others && data.others.GPS ? data.others.GPS : 'Not Available'}</p>
+       <p class="card-text">NFC: ${data.others && data.others.NFC ? data.others.NFC : 'Not Available'}</p>
+       <p class="card-text">USB: ${data.others && data.others.USB ? data.others.USB : 'Not Available'}</p>
+       <p class="card-text">Radio: ${data.others && data.others.Radio ? data.others.Radio : 'Not Available'}</p>
+    </div>
+   </div>
+            
+    
     `;
     phoneDetails.appendChild(div);
+
+
+
 }
