@@ -34,12 +34,12 @@ const displaySearchResults = data => {
         const div = document.createElement('div');
         div.innerHTML = `
             <div  class="card">
-                <img src="${phone.image}" class=" img-fluid card-img-top w-75 mx-auto" alt="...">
+                <img src="${phone.image}" class=" pt-3 img-fluid card-img-top w-50 mx-auto" alt="...">
                 <div class="card-body">
                   <h5 class="card-text">${phone.phone_name}</h5>
                   <h6 class="card-title">${phone.brand}</h6>
-                    <button onclick="loadPhoneDetail('${phone.slug}')" class="btn btn-success">Details</button>
-
+                  <a href="#card"><button onclick="loadPhoneDetail('${phone.slug}') "class="btn btn-success">Details </button>
+                    </a>
                 </div>
             </div>
     `;
@@ -90,8 +90,8 @@ const displayPhoneDetail = data => {
     
     
     <div class="col-lg-12 ">
-        <div class="  card-body">
-        <img src="${data.image}" class="card-img-top w-50 img-fluid" alt="...">
+        <div id="card" class="  card-body">
+        <img src="${data.image}" class="card-img-top w-50 img-fluid mx-auto" alt="...">
         <p id="release" class="card-text">${data.releaseDate ? data.releaseDate : 'Releasing Soon'}</p>
             <h6 class="card-title">${data.name}</h6>
             <p class="card-text">Brand:${data.brand}</p>
