@@ -79,23 +79,30 @@ const displayPhoneDetail = data => {
 
     }
     div.innerHTML = `
-    <div class="row">
-    <div class="col-lg-6 ">
+    
+    
+    <div class="col-lg-12 ">
+        <div class="  card-body">
         <img src="${data.image}" class="card-img-top" alt="...">
         <p id="release" class="card-text">${data.releaseDate ? data.releaseDate : ''}</p>
-    </div>
-    <div class="col-lg-6 w-50">
-        <div class="card-body">
-            
             <h6 class="card-title">${data.name}</h6>
             <p class="card-text">Brand:${data.brand}</p>
             <p class="card-text">Storage:${data.mainFeatures.storage}</p>
             <p class="card-text">DisplaySize:${data.mainFeatures.displaySize}</p>
             <p class="card-text">Memory:${data.mainFeatures.memory}</p>
             <p class="card-text">Sensors:${data.mainFeatures.sensors.join()}</p>
+            
+            <hr class="w-100">
+            <p class="card-text">WLAN:${data.others.WLAN ? data.others.WLAN : ''}</p>
+            <p class="card-text">Bluetooth:${data.others.Bluetooth ? data.others.Bluetooth : ''}</p>
+            <p class="card-text">GPS:${data.others.GPS ? data.others.GPS : ''}</p>
+            <p class="card-text">NFC:${data.others.NFC ? data.others.NFC : ''}</p>
+            <p class="card-text">USB:${data.others.USB ? data.others.USB : ''}</p>
+            <p class="card-text">Radio:${data.others.Radio ? data.others.Radio : ''}</p>
 
-        </div>
-    </div>
+
+        
+   
 
 </div>
     `;
