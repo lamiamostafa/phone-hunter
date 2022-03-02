@@ -8,20 +8,27 @@ const searchPhone = () => {
         return alert("Please write something to display");
     }
 
+
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
     // console.log(url);
     fetch(url)
         .then(response => response.json())
-        .then(phones => displaySearchResults(phones.data));
+        .then(phones => displaySearchResults(phones.data.slice(0, 20)));
+
+
 };
 const displaySearchResults = data => {
     console.log(data);
+
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
     if (data.length == 0) {
         return alert("No results found");
 
     }
+
+
+
     data.forEach(phone => {
         console.log(phone);
         const div = document.createElement('div');
@@ -55,15 +62,42 @@ const displayPhoneDetail = data => {
     console.log(data);
 
     const phoneDetails = document.getElementById('phone-details');
+    phoneDetails.textContent = '';
     const div = document.createElement('div');
     div.classList.add('card');
+    // div.innerHTML = `
+
+    // <img src="${data.image}" class="card-img-top" alt="...">
+    // <div class="card-body">
+    //     <h5 class="card-title">Name</h5>
+    //     <p class="card-text">Details</p>
+
+    // </div>
+    // `;
+    if (data.releaseDate == "") {
+        document.getElementById('release').style.display = 'none';
+
+    }
     div.innerHTML = `
-    <img src="${data.image}" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Name</h5>
-        <p class="card-text">Details</p>
-       
+    <div class="row">
+    <div class="col-lg-6 ">
+        <img src="${data.image}" class="card-img-top" alt="...">
+        <p id="release" class="card-text">${data.releaseDate ? data.releaseDate : ''}</p>
     </div>
+    <div class="col-lg-6 w-50">
+        <div class="card-body">
+            
+            <h6 class="card-title">${data.name}</h6>
+            <p class="card-text">Brand:${data.brand}</p>
+            <p class="card-text">Storage:${data.mainFeatures.storage}</p>
+            <p class="card-text">DisplaySize:${data.mainFeatures.displaySize}</p>
+            <p class="card-text">Memory:${data.mainFeatures.memory}</p>
+            <p class="card-text">Sensors:${data.mainFeatures.sensors.join()}</p>
+
+        </div>
+    </div>
+
+</div>
     `;
     phoneDetails.appendChild(div);
 }
