@@ -1,3 +1,4 @@
+// searchPhoneResult
 const searchPhone = () => {
 
     const searchField = document.getElementById('search-field');
@@ -40,14 +41,20 @@ const displaySearchResults = data => {
                   <h6 class="card-title">${phone.brand}</h6>
                   <a href="#card"><button onclick="loadPhoneDetail('${phone.slug}') "class="btn btn-success">Details </button>
                     </a>
+                    
                 </div>
+               
             </div>
+           
+            
     `;
         searchResult.appendChild(div);
+
     });
 
 }
 
+// single phone details
 const loadPhoneDetail = id => {
     console.log(id);
 
@@ -75,14 +82,16 @@ const displayPhoneDetail = data => {
        
     <div class="col-lg-12 ">
         <div id="card" class="  card-body">
-            <img src="${data.image}" class="card-img-top w-50 img-fluid mx-auto" alt="...">
+         <div class=" text-center">
+            <img src="${data.image}" class="card-img-top  w-50 img-fluid " alt="...">
             <p id="release" class="card-text">${data.releaseDate ? data.releaseDate : 'Releasing Soon'}</p>
+         </div>   
             <h6 class="card-title">${data.name}</h6>
-            <p class="card-text">Brand: ${data.brand}</p>
-            <p class="card-text">Storage: ${data.mainFeatures.storage}</p>
-            <p class="card-text">DisplaySize: ${data.mainFeatures.displaySize}</p>
-            <p class="card-text">Memory: ${data.mainFeatures.memory}</p>
-            <p class="card-text">Sensors: ${data.mainFeatures.sensors.join()}</p>
+            <p class="card-text"><b>Brand:</b> ${data.brand}</p>
+            <p class="card-text"><b>Storage:</b> ${data.mainFeatures.storage}</p>
+            <p class="card-text"><b>DisplaySize:</b> ${data.mainFeatures.displaySize}</p>
+            <p class="card-text"><b>Memory:</b> ${data.mainFeatures.memory}</p>
+            <p class="card-text"><b>Sensors:</b> ${data.mainFeatures.sensors.join()}</p>
         </div>
     </div>
                        
@@ -91,12 +100,12 @@ const displayPhoneDetail = data => {
        <hr class="w-100">      
        <h6 id="others"class="card-title"></h6>
        <p></p>
-       <p class="card-text">WLAN: ${data.others && data.others.WLAN ? data.others.WLAN : 'Not Available'}</p>
-       <p class="card-text">Bluetooth: ${data.others && data.others.Bluetooth ? data.others.Bluetooth : 'Not Available'}</p>
-       <p class="card-text">GPS: ${data.others && data.others.GPS ? data.others.GPS : 'Not Available'}</p>
-       <p class="card-text">NFC: ${data.others && data.others.NFC ? data.others.NFC : 'Not Available'}</p>
-       <p class="card-text">USB: ${data.others && data.others.USB ? data.others.USB : 'Not Available'}</p>
-       <p class="card-text">Radio: ${data.others && data.others.Radio ? data.others.Radio : 'Not Available'}</p>
+       <p class="card-text"><b>WLAN: </b> ${data.others && data.others.WLAN ? data.others.WLAN : 'Not Available'}</p>
+       <p class="card-text"><b>Bluetooth:</b> ${data.others && data.others.Bluetooth ? data.others.Bluetooth : 'Not Available'}</p>
+       <p class="card-text"><b>GPS:</b> ${data.others && data.others.GPS ? data.others.GPS : 'Not Available'}</p>
+       <p class="card-text"><b>NFC:</b> ${data.others && data.others.NFC ? data.others.NFC : 'Not Available'}</p>
+       <p class="card-text"><b>USB:</b> ${data.others && data.others.USB ? data.others.USB : 'Not Available'}</p>
+       <p class="card-text"><b>Radio:</b> ${data.others && data.others.Radio ? data.others.Radio : 'Not Available'}</p>
     </div>
    </div>
             
@@ -104,6 +113,7 @@ const displayPhoneDetail = data => {
     `;
     phoneDetails.appendChild(div);
 
-
-
 }
+
+
+
